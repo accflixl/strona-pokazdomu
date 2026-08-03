@@ -529,6 +529,25 @@
     margin-top: var(--space-xs);
   }
 
+  .form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+    cursor: pointer;
+  }
+
+  .form-consent input {
+    margin-top: 0.2rem;
+    accent-color: var(--color-accent);
+  }
+
+  .form-consent a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
   /* Before / after comparison */
   .compare-section {
     max-width: 1100px;
@@ -724,6 +743,11 @@
         <label for="form-message">Wiadomość</label>
         <textarea id="form-message" name="Wiadomość" rows="7" placeholder="Dzień dobry, chciałbym zamówić wideo dla mojego ogłoszenia. Chciałbym zamówić na firmę, dane do faktury: [nazwa spółki], NIP [numer], adres [adres]. Płatność przelewem. Proszę o informacje."></textarea>
       </div>
+
+      <label class="form-consent">
+        <input type="checkbox" name="Zgoda" value="Akceptuję Politykę Prywatności" required>
+        <span>Akceptuję <a href="privacy.html" target="_blank" rel="noopener">Politykę Prywatności</a></span>
+      </label>
 
       <button type="submit" class="btn-primary">Wyślij zapytanie</button>
     </form>
