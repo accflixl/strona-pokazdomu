@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Polityka Prywatności i Cookies — DomWizualnie</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-bg: #0e1014;
+    --color-bg-alt: #14171d;
+    --color-accent: #c9a24b;
+    --color-accent-dark: #a8842f;
+    --color-text: #f5f2ea;
+    --color-text-muted: #b4b0a6;
+    --color-border: rgba(245, 242, 234, 0.14);
+
+    --font-main: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --fs-h1: 2.4rem;
+    --fs-h2: 1.4rem;
+    --fs-h3: 1.1rem;
+    --fs-body: 1rem;
+    --fs-small: 0.85rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 6rem;
+
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .logo-slot {
+    width: 160px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    object-fit: cover;
+  }
+
+  .logo-col {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .logo-sub {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--color-text-muted);
+    margin-top: 0.15rem;
+  }
+
+  .logo-slot .logo-text span { color: var(--color-accent); }
+
+  .btn-back {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+  }
+
+  .btn-back:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    background: rgba(201, 162, 75, 0.08);
+  }
+
+  /* Hero */
+  .legal-hero {
+    padding: var(--space-xl) var(--space-lg) var(--space-lg);
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .legal-eyebrow {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .legal-title {
+    font-size: var(--fs-h1);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+
+  .legal-title .accent { color: var(--color-accent); }
+
+  .legal-subtitle {
+    color: var(--color-text-muted);
+    max-width: 50ch;
+    margin: 0 auto;
+  }
+
+  /* Content */
+  .legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg) var(--space-xl);
+  }
+
+  .legal-section {
+    padding: var(--space-lg) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .section-tag {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+  }
+
+  .legal-section h2 {
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+
+  .legal-section p, .legal-section li {
+    color: var(--color-text-muted);
+    font-size: var(--fs-body);
+  }
+
+  .legal-section p + p { margin-top: var(--space-sm); }
+
+  .legal-section ul {
+    margin-top: var(--space-sm);
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .legal-section strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .contact-line {
+    display: inline-block;
+    margin-top: var(--space-sm);
+    padding: 0.5rem 1rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: var(--fs-small);
+  }
+
+  .contact-line a { color: var(--color-accent); }
+
+  /* Rights grid */
+  .rights-grid {
+    margin-top: var(--space-sm);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .right-chip {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--space-sm);
+    font-size: var(--fs-small);
+    color: var(--color-text);
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* Klauzule cards */
+  .clause-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .clause-card {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: var(--space-md);
+  }
+
+  .clause-num {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+  }
+
+  .clause-card h3 {
+    font-size: var(--fs-h3);
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+  }
+
+  .clause-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Legal bar ---------- */
+  .legal-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+  }
+
+  .legal-bar a {
+    color: var(--color-text-muted);
+    transition: color 0.2s var(--ease);
+  }
+
+  .legal-bar a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 700px) {
+    .rights-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav { padding: var(--space-sm); }
+    .legal-hero { padding: var(--space-lg) var(--space-sm); }
+    .legal-content { padding: 0 var(--space-sm) var(--space-lg); }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="logo-slot"><img src="logo.png" alt="DomWizualnie" class="logo-icon"><span class="logo-col"><span class="logo-text">Dom<span>Wizualnie</span></span><span class="logo-sub" id="logo-brand"></span></span></a>
+    <a href="index.html" class="btn-back">← Powrót do strony głównej</a>
+  </nav>
+
+  <div class="legal-hero">
+    <div class="legal-eyebrow">Dokumenty prawne</div>
+    <h1 class="legal-title">Polityka Prywatności <span class="accent">&amp; Cookies</span></h1>
+    <p class="legal-subtitle">Jak zbieramy, przetwarzamy i chronimy Twoje dane, opisane jasno i w pełni.</p>
+  </div>
+
+  <div class="legal-content">
+
+    <section class="legal-section">
+      <div class="section-tag">Administrator danych</div>
+      <h2>Kto odpowiada za Twoje dane</h2>
+      <p>Zgodnie z wymogami Rozporządzenia (UE) 2016/679 (RODO) przedstawiamy kompleksowe informacje dotyczące tego, w jaki sposób gromadzimy, przetwarzamy i chronimy Twoje dane osobowe.</p>
+      <p>Administratorem Twoich danych osobowych jest <strong><span id="company-name"></span></strong> z siedzibą przy ul. Mglista 19A, 43-300 Bielsko-Biała, KRS: <span id="company-krs"></span>, NIP: <span id="company-nip"></span>, REGON: <span id="company-regon"></span> (dalej: „Administrator" lub „Spółka"). Marka DomWizualnie jest prowadzona przez Administratora.</p>
+      <div class="contact-line">Kontakt w sprawach danych: <a href="mailto:contact@flixel.co">contact@flixel.co</a></div>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-tag">Sekcja 3</div>
+      <h2>Cele i podstawy prawne przetwarzania</h2>
+      <p>Przetwarzamy Twoje dane osobowe opierając się na następujących podstawach prawnych określonych w RODO:</p>
+      <ul>
+        <li>W celu wykonania umowy lub do podjęcia działań na Twoje żądanie przed jej zawarciem, np. umówienie spotkania (art. 6 ust. 1 lit. b RODO)</li>
+        <li>W celu wypełnienia obowiązków prawnych ciążących na Administratorze, w tym obowiązków księgowych i podatkowych (art. 6 ust. 1 lit. c RODO)</li>
+        <li>Do celów wynikających z prawnie uzasadnionych interesów realizowanych przez Spółkę, takich jak dochodzenie roszczeń lub obrona przed nimi, a także bieżąca komunikacja biznesowa (art. 6 ust. 1 lit. f RODO)</li>
+        <li>Na podstawie Twojej dobrowolnej zgody w określonych celach, w tym na instalację opcjonalnych plików cookies (art. 6 ust. 1 lit. a RODO)</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-tag">Sekcje 4 i 5</div>
+      <h2>Jakie dane zbieramy i komu je udostępniamy</h2>
+      <p><strong>Kategorie danych.</strong> Przetwarzamy przede wszystkim dane niezbędne do komunikacji i współpracy biznesowej: imię i nazwisko, nazwę firmy, NIP, adres e-mail, numer telefonu, dane dotyczące rozliczeń, dane podawane dobrowolnie podczas rezerwacji spotkań w systemie cal.com oraz dane techniczne i analityczne pozyskiwane za pośrednictwem plików cookies. Większość danych pozyskujemy bezpośrednio od Ciebie. Część danych technicznych gromadzona jest automatycznie podczas korzystania ze strony.</p>
+      <p><strong>Odbiorcy danych i transfer poza EOG.</strong> Twoje dane nie są sprzedawane. Udostępniamy je wyłącznie podmiotom uprawnionym z mocy prawa oraz zaufanym podmiotom trzecim wspierającym naszą działalność na podstawie zawartych umów powierzenia przetwarzania danych. Należą do nich: dostawcy usług chmurowych (np. Google Drive), systemy do komunikacji wewnętrznej (np. Slack), dostawcy usług IT i oprogramowania, biuro rachunkowe oraz dostawca systemu do rezerwacji spotkań (cal.com).</p>
+      <p>W związku z korzystaniem z globalnych usługodawców, Twoje dane mogą być przekazywane poza Europejski Obszar Gospodarczy (EOG). W takich przypadkach zapewniamy odpowiedni stopień ochrony, opierając się na zatwierdzonych przez Komisję Europejską Standardowych Klauzulach Umownych.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-tag">Sekcja 6</div>
+      <h2>Jak długo przechowujemy Twoje dane</h2>
+      <ul>
+        <li><strong>Dane zawarte w umowach</strong> — przez czas ich trwania, a po zakończeniu do upływu terminu przedawnienia roszczeń</li>
+        <li><strong>Dokumentacja księgowo-podatkowa</strong> — przez okres wymagany przepisami prawa (np. 5 lat licząc od końca roku kalendarzowego)</li>
+        <li><strong>Dane przetwarzane na podstawie zgody</strong> — do momentu jej wycofania</li>
+        <li><strong>Dane z rekrutacji</strong> — do zakończenia procesu, chyba że wyrazisz zgodę na przyszłe rekrutacje</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-tag">Sekcja 7</div>
+      <h2>Twoje prawa wynikające z RODO</h2>
+      <p>Zgodnie z przepisami RODO, przysługuje Ci pełny wachlarz praw:</p>
+      <div class="rights-grid">
+        <div class="right-chip">Dostęp i kopia danych</div>
+        <div class="right-chip">Sprostowanie</div>
+        <div class="right-chip">Usunięcie danych</div>
+        <div class="right-chip">Ograniczenie przetwarzania</div>
+        <div class="right-chip">Przenoszenie danych</div>
+        <div class="right-chip">Sprzeciw wobec przetwarzania</div>
+        <div class="right-chip">Cofnięcie zgody</div>
+        <div class="right-chip">Skarga do PUODO</div>
+      </div>
+      <p style="margin-top: 1rem;">Masz również prawo wniesienia skargi do organu nadzorczego, Prezesa Urzędu Ochrony Danych Osobowych.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-tag">Sekcja 8</div>
+      <h2>Pliki cookies i system rezerwacji spotkań</h2>
+      <p>Nasza strona internetowa używa plików cookies, niewielkich plików tekstowych zapisywanych na Twoim urządzeniu. Wykorzystujemy pliki cookies w celach:</p>
+      <ul>
+        <li><strong>Niezbędnych</strong> — do prawidłowego funkcjonowania strony</li>
+        <li><strong>Analitycznych i statystycznych</strong> — do zrozumienia, w jaki sposób użytkownicy korzystają ze strony (np. Google Analytics), co pozwala nam ulepszać jej strukturę</li>
+        <li><strong>Marketingowych</strong> — jeżeli wyrazisz na to odpowiednią zgodę</li>
+      </ul>
+      <p>Zgodami na pliki cookies możesz samodzielnie zarządzać za pomocą ustawień swojej przeglądarki internetowej lub z poziomu panelu zgód na naszej stronie.</p>
+      <p>Nie korzystamy ze standardowego formularza kontaktowego. W celu umówienia spotkania biznesowego korzystamy z zewnętrznego rozwiązania cal.com. Dane wprowadzane przez Ciebie w tym systemie (np. imię, e-mail) są wykorzystywane wyłącznie do zarządzania kalendarzem Spółki i zrealizowania zaplanowanej rozmowy wideo.</p>
+    </section>
+
+    <section class="legal-section">
+      <div class="section-tag">Szczegółowe klauzule informacyjne</div>
+      <h2>Klauzule według rodzaju relacji</h2>
+      <p>Poniższe klauzule dotyczą konkretnych kategorii osób, których dane przetwarzamy.</p>
+
+      <div class="clause-list">
+        <div class="clause-card">
+          <div class="clause-num">01</div>
+          <h3>Klienci i osoby współpracujące</h3>
+          <p>Dane osobowe klientów i współpracowników przetwarzane są w celu zawarcia i wykonania umów o świadczenie usług oraz dla realizacji obowiązków rachunkowych i podatkowych. Podanie danych (np. danych firmowych, NIP, danych osób do kontaktu) jest dobrowolne, ale stanowi warunek konieczny do zawarcia i realizacji umowy. Dane przechowujemy przez okres realizacji usług, a następnie przez czas przedawnienia roszczeń i czas wymagany prawem dla dokumentacji finansowej.</p>
+        </div>
+        <div class="clause-card">
+          <div class="clause-num">02</div>
+          <h3>Kontraktorzy (B2B / umowy cywilnoprawne)</h3>
+          <p>Dane osobowe podmiotów i osób świadczących usługi na rzecz Spółki przetwarzamy w celu zawarcia, realizacji i rozliczenia umowy zlecenia, umowy o dzieło lub umowy o współpracy (B2B) na podstawie art. 6 ust. 1 lit. b i c RODO. W ramach współpracy Twoje dane mogą być przetwarzane w naszych systemach operacyjnych (np. Google Drive, Slack). Dane przechowujemy przez okres obowiązywania umowy, a po jej rozwiązaniu do momentu przedawnienia roszczeń i obowiązkowej archiwizacji dokumentów księgowych.</p>
+        </div>
+        <div class="clause-card">
+          <div class="clause-num">03</div>
+          <h3>Kandydaci do pracy</h3>
+          <p>Twoje dane przetwarzamy w celu oceny kwalifikacji i przeprowadzenia rekrutacji. Podstawą prawną dla zakresu danych wskazanego w przepisach prawa pracy jest konieczność podjęcia działań przed zawarciem umowy. Dodatkowe dane (np. zainteresowania, zdjęcie) przetwarzamy na podstawie Twojej zgody. W przypadku zgody na udział w przyszłych rekrutacjach dane będziemy przetwarzać do czasu jej wycofania. Posiadasz prawo wycofania zgody w każdym momencie.</p>
+        </div>
+        <div class="clause-card">
+          <div class="clause-num">04</div>
+          <h3>Stażyści i praktykanci</h3>
+          <p>Dane osobowe stażystów i praktykantów są gromadzone i przetwarzane w celu zawarcia i realizacji umowy o staż lub praktykę studencką oraz organizacji stażu i realizacji powiązanych obowiązków prawnych. Dane przechowujemy przez okres odbywania stażu, a po jego zakończeniu przez czas niezbędny do archiwizacji dokumentacji oraz wygaśnięcia potencjalnych roszczeń. Podanie danych jest wymogiem do rozpoczęcia stażu lub praktyki.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="legal-bar">
+    <span>&copy; 2026 DomWizualnie. Wszelkie prawa zastrzeżone.</span>
+    <a href="privacy.html">Polityka Prywatności</a>
+  </div>
+
+  <script>
+    // Assembled at runtime so the raw HTML source does not expose the full
+    // legal entity name, NIP, KRS or REGON as plain indexable text.
+    (function () {
+      var nameParts = ['FLIXEL', ' Sp', 'ółka', ' z ograniczoną', ' odpowiedzialnością'];
+      var nipParts = ['547', '225', '7832'];
+      var krsParts = ['000121', '9640'];
+      var regonParts = ['54381', '5339'];
+      var brandParts = ['od ', 'Flixel', ' sp. z o.o.'];
+
+      document.getElementById('company-name').textContent = nameParts.join('');
+      document.getElementById('company-nip').textContent = nipParts.join('');
+      document.getElementById('company-krs').textContent = krsParts.join('');
+      document.getElementById('company-regon').textContent = regonParts.join('');
+      document.getElementById('logo-brand').textContent = brandParts.join('');
+    })();
+  </script>
+
+</body>
+</html>

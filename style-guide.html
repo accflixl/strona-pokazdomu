@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style Guide — DomWizualnie</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Colors */
+    --color-bg: #0e1014;
+    --color-bg-alt: #14171d;
+    --color-overlay: rgba(10, 12, 16, 0.6);
+    --color-accent: #c9a24b;
+    --color-accent-dark: #a8842f;
+    --color-text: #f5f2ea;
+    --color-text-muted: #b4b0a6;
+    --color-border: rgba(245, 242, 234, 0.14);
+
+    /* Typography */
+    --font-main: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --fs-hero: clamp(2.4rem, 6vw, 4.5rem);
+    --fs-h1: 2.5rem;
+    --fs-h2: 1.75rem;
+    --fs-body: 1.05rem;
+    --fs-small: 0.9rem;
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+
+    /* Motion */
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text);
+    padding: var(--space-lg);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .guide-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .guide-header h1 {
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-bold);
+  }
+
+  .guide-header p {
+    margin-top: var(--space-xs);
+    color: var(--color-text-muted);
+  }
+
+  section.block {
+    margin-bottom: var(--space-xl);
+  }
+
+  section.block h2 {
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Color swatches */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+
+  .swatch-color {
+    height: 100px;
+  }
+
+  .swatch-info {
+    padding: var(--space-sm);
+  }
+
+  .swatch-name {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-small);
+  }
+
+  .swatch-hex {
+    font-family: monospace;
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* Typography */
+  .type-sample {
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .type-label {
+    font-size: var(--fs-small);
+    color: var(--color-accent);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .type-hero { font-size: var(--fs-hero); font-weight: var(--fw-bold); line-height: 1.1; }
+  .type-h1 { font-size: var(--fs-h1); font-weight: var(--fw-bold); }
+  .type-h2 { font-size: var(--fs-h2); font-weight: var(--fw-medium); }
+  .type-body { font-size: var(--fs-body); font-weight: var(--fw-regular); }
+  .type-small { font-size: var(--fs-small); font-weight: var(--fw-medium); color: var(--color-text-muted); }
+
+  /* Buttons */
+  .btn-row {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .btn-primary, .btn-secondary, .btn-cta {
+    font-weight: var(--fw-bold);
+    border-radius: 8px;
+    padding: 0.9rem 2rem;
+    font-size: var(--fs-body);
+    display: inline-block;
+  }
+
+  .btn-primary { color: var(--color-bg); background: var(--color-accent); }
+  .btn-secondary { color: var(--color-text); border: 1px solid var(--color-border); }
+  .btn-cta { color: var(--color-bg); background: var(--color-accent); font-size: var(--fs-small); padding: 0.65rem 1.4rem; }
+</style>
+</head>
+<body>
+
+  <div class="guide-header">
+    <h1>Style Guide</h1>
+    <p>Kolory i typografia używane na stronie DomWizualnie.</p>
+  </div>
+
+  <section class="block">
+    <h2>Kolory</h2>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #0e1014;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Tło (Background)</div>
+          <div class="swatch-hex">#0E1014</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #14171d;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Tło alternatywne</div>
+          <div class="swatch-hex">#14171D</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #c9a24b;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Akcent (Gold)</div>
+          <div class="swatch-hex">#C9A24B</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #a8842f;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Akcent — ciemny</div>
+          <div class="swatch-hex">#A8842F</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #f5f2ea;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Tekst główny</div>
+          <div class="swatch-hex">#F5F2EA</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #b4b0a6;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Tekst przygaszony</div>
+          <div class="swatch-hex">#B4B0A6</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Typografia — Manrope</h2>
+
+    <div class="type-sample">
+      <div class="type-label">Hero / Display</div>
+      <div class="type-hero">DomWizualnie</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">Nagłówek H1</div>
+      <div class="type-h1">Wideo, które sprzedaje nieruchomości</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">Nagłówek H2</div>
+      <div class="type-h2">Jak to działa</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">Tekst podstawowy</div>
+      <div class="type-body">Przesyłasz zdjęcia swojej nieruchomości, a my tworzymy profesjonalne wideo wygenerowane przez AI.</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">Tekst mały / etykiety</div>
+      <div class="type-small">Cennik · Kontakt · Jak to działa</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Przyciski</h2>
+    <div class="btn-row">
+      <a href="#" class="btn-primary">Zamów wideo</a>
+      <a href="#" class="btn-secondary">Jak to działa</a>
+      <a href="#" class="btn-cta">Zamów wideo</a>
+    </div>
+  </section>
+
+</body>
+</html>
