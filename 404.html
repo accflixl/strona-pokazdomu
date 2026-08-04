@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>DomWizualnie</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0e1014;
+    color: #f5f2ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+    padding: 2rem;
+  }
+  a { color: #c9a24b; }
+</style>
+</head>
+<body>
+  <p id="msg">Przekierowywanie...</p>
+
+  <script>
+    // GitHub Pages is case-sensitive, but client links are sometimes
+    // shared/typed in the wrong case (e.g. /develia instead of /DEVELIA).
+    // This 404 page catches those and redirects to the correct casing,
+    // for every client folder — add new slugs here as they're created.
+    var knownSlugs = ["DEVELIA", "jan-kowalski", "klient-template"];
+
+    var parts = location.pathname.split('/').filter(Boolean);
+    var matched = false;
+
+    for (var i = 0; i < parts.length; i++) {
+      for (var j = 0; j < knownSlugs.length; j++) {
+        if (parts[i].toLowerCase() === knownSlugs[j].toLowerCase() && parts[i] !== knownSlugs[j]) {
+          parts[i] = knownSlugs[j];
+          matched = true;
+        }
+      }
+    }
+
+    if (matched) {
+      location.replace('/' + parts.join('/') + '/');
+    } else {
+      document.getElementById('msg').innerHTML =
+        'Nie znaleziono strony. <a href="/">Wróć na stronę główną</a>.';
+    }
+  </script>
+</body>
+</html>
