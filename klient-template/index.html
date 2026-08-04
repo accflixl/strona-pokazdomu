@@ -113,6 +113,28 @@
     }
   }
 
+  /* Greeting */
+  .greeting {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-lg) 0;
+    text-align: center;
+  }
+
+  .greeting-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .greeting-name .accent {
+    color: var(--color-accent);
+  }
+
+  .greeting-sub {
+    margin-top: 0.3rem;
+    color: var(--color-text-muted);
+  }
+
   /* Listing section */
   .listing-section {
     max-width: 640px;
@@ -536,6 +558,8 @@
        adres (listing-address i page-title), liczbę pokoi (listing-rooms),
        powierzchnię (listing-area), numer ogłoszenia (listing-ref) oraz
        link "Otwórz ↗" w pasku adresu ([LINK_OFERTY_OTODOM]).
+       Podmień też powitanie na górze strony: [Nazwa Firmy] w "greeting-name"
+       na nazwę biura nieruchomości / agenta, do którego kierujesz stronę.
     3. Wgraj wygenerowane wideo jako "video.mp4" do tego samego folderu.
     4. Gotowe — reszta strony (nawigacja, style, sekcja CTA) jest
        wspólna i nie wymaga zmian.
@@ -552,6 +576,11 @@
     </a>
     <a href="#wideo" class="btn-cta">Zobacz co przygotowaliśmy dla Ciebie</a>
   </nav>
+
+  <div class="greeting">
+    <div class="greeting-name">Dzień dobry, <span class="accent">[Nazwa Firmy]</span></div>
+    <div class="greeting-sub">Przygotowaliśmy dla Was coś specjalnego.</div>
+  </div>
 
   <section class="listing-section">
     <div class="section-label">Znaleźliśmy Twoje ogłoszenie</div>
