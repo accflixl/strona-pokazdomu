@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Wawel Service — Twoje wideo nieruchomości — DomWizualnie</title>
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-bg: #0e1014;
+    --color-bg-alt: #14171d;
+    --color-accent: #c9a24b;
+    --color-accent-dark: #a8842f;
+    --color-text: #f5f2ea;
+    --color-text-muted: #b4b0a6;
+    --color-border: rgba(245, 242, 234, 0.14);
+
+    --font-main: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --fs-h1: 2.2rem;
+    --fs-h2: 1.5rem;
+    --fs-body: 1.05rem;
+    --fs-small: 0.9rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 6rem;
+
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .logo-slot {
+    width: 160px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    object-fit: cover;
+  }
+
+  .logo-col {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .logo-sub {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--color-text-muted);
+    margin-top: 0.15rem;
+  }
+
+  .logo-slot .logo-text span { color: var(--color-accent); }
+
+  .btn-cta {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    color: var(--color-bg);
+    background: var(--color-accent);
+    padding: 0.65rem 1.2rem;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+
+  .btn-cta:hover {
+    background: var(--color-accent-dark);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 700px) {
+    .btn-cta {
+      font-size: 0.78rem;
+      padding: 0.55rem 0.9rem;
+    }
+  }
+
+  /* Greeting */
+  .greeting {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-lg) 0;
+    text-align: center;
+  }
+
+  .greeting-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .greeting-name .accent {
+    color: var(--color-accent);
+  }
+
+  .greeting-sub {
+    margin-top: 0.3rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Listing section */
+  .listing-section {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-lg) var(--space-md);
+  }
+
+  .section-label {
+    font-size: var(--fs-small);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+  }
+
+  .listing-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    max-width: 26ch;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .delivery-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    width: fit-content;
+    margin: 0 auto var(--space-lg);
+    font-size: var(--fs-small);
+    font-weight: 700;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+    background: rgba(201, 162, 75, 0.08);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+  }
+
+  /* "Embedded" Otodom listing — styled like a real browser window
+     showing a snippet of otodom.pl, since Otodom blocks real iframes
+     (X-Frame-Options: DENY). Content inside is pulled from the
+     listing's public og:image / og:title / og:description. */
+  .otodom-frame {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .otodom-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #eeeeef;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .otodom-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    background: #d3d3d6;
+  }
+
+  .otodom-urlbar {
+    flex: 1;
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.72rem;
+    color: #888;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .otodom-open-link {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #999;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    transition: color 0.2s var(--ease);
+  }
+
+  .otodom-open-link:hover {
+    color: #333;
+  }
+
+  .otodom-body {
+    background: #fff;
+    color: #111;
+  }
+
+  /* Photo carousel — scrolls horizontally, snaps per photo */
+  .otodom-gallery {
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    background: #eee;
+  }
+
+  .otodom-gallery::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .otodom-gallery::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 999px;
+  }
+
+  .otodom-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 0.5rem 0;
+    background: #fff;
+  }
+
+  .otodom-dot-nav {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: background 0.2s ease;
+  }
+
+  .otodom-dot-nav.active {
+    background: #999;
+  }
+
+  .otodom-gallery img {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: #eee;
+  }
+
+  .otodom-photo-placeholder {
+    flex: 0 0 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f2f2f2;
+    color: #888;
+    font-size: var(--fs-small);
+    text-align: center;
+    padding: var(--space-sm);
+  }
+
+  .otodom-info {
+    padding: 1rem 1.2rem 1.2rem;
+  }
+
+  .otodom-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0b0b0c;
+  }
+
+  .otodom-price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #0b0b0c;
+    margin-top: 0.15rem;
+  }
+
+  .otodom-addr {
+    color: #666;
+    font-size: 0.88rem;
+    margin-top: 0.15rem;
+  }
+
+  .otodom-badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .otodom-badge {
+    background: #f5f5f5;
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.78rem;
+    color: #333;
+    font-weight: 600;
+  }
+
+  /* Video section */
+  .video-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-lg) var(--space-xl);
+  }
+
+  .video-heading {
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    text-align: center;
+    max-width: 30ch;
+    margin: 0 auto var(--space-md);
+  }
+
+  .video-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: #000;
+  }
+
+  .video-wrapper video {
+    width: 100%;
+    display: block;
+  }
+
+  /* CTA section */
+  .cta-section {
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: var(--fs-h1);
+    font-weight: 700;
+    max-width: 22ch;
+    margin: 0 auto var(--space-sm);
+  }
+
+  .cta-title .accent { color: var(--color-accent); }
+
+  .cta-text {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    max-width: 50ch;
+    margin: 0 auto var(--space-md);
+  }
+
+  /* Order form */
+  .order-form {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .form-row label {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .form-row input,
+  .form-row textarea {
+    font-family: var(--font-main);
+    font-size: var(--fs-body);
+    color: var(--color-text);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    resize: vertical;
+  }
+
+  .form-row input:focus,
+  .form-row textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .form-row textarea::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.7;
+  }
+
+  .order-form .btn-primary {
+    border: none;
+    cursor: pointer;
+    margin-top: var(--space-xs);
+  }
+
+  .form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+    cursor: pointer;
+  }
+
+  .form-consent input {
+    margin-top: 0.2rem;
+    accent-color: var(--color-accent);
+  }
+
+  .form-consent a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  /* Before / after comparison */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .compare-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+
+  .compare-card img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .compare-card:hover img {
+    transform: scale(1.04);
+  }
+
+  .compare-label {
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    left: 12px;
+    background: rgba(10, 12, 16, 0.75);
+    color: var(--color-text);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+  }
+
+  .compare-label.after {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  @media (max-width: 700px) {
+    .compare-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-size: var(--fs-body);
+    font-weight: 700;
+    color: var(--color-bg);
+    background: var(--color-accent);
+    padding: 0.95rem 2.2rem;
+    border-radius: 8px;
+    transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-dark);
+    transform: translateY(-2px);
+  }
+
+  /* Legal bar */
+  .legal-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+  }
+
+  .legal-bar a { color: var(--color-text-muted); transition: color 0.2s var(--ease); }
+  .legal-bar a:hover { color: var(--color-accent); }
+</style>
+</head>
+<body>
+
+  <!--
+    ================================================================
+    SZABLON STRONY KLIENTA — jak z tego korzystać
+    ================================================================
+    1. Skopiuj cały folder "klient-template" i zmień jego nazwę na
+       slug klienta, np. "jan-kowalski" (bez spacji i polskich znaków).
+       Ta nazwa folderu staje się adresem: domwizualnie.pl/jan-kowalski
+    2. Podaj link do oferty na Otodomie. Otodom blokuje osadzanie
+       (X-Frame-Options: DENY), więc prawdziwego iframe nie da się
+       zrobić — dlatego sekcja "otodom-frame" to stylizowane okno
+       przeglądarki z realnymi danymi oferty w środku (nie live iframe).
+       Dane pobierasz z publicznych meta tagów strony jednym poleceniem:
+       curl -s "LINK_OFERTY" -A "Mozilla/5.0" | grep -o '<meta property="og:[^>]*>'
+       Wypełnij nimi: zdjęcie (otodom-photo src), cenę (listing-price),
+       adres (listing-address i page-title), liczbę pokoi (listing-rooms),
+       powierzchnię (listing-area), numer ogłoszenia (listing-ref) oraz
+       link "Otwórz ↗" w pasku adresu ([LINK_OFERTY_OTODOM]).
+       Podmień też powitanie na górze strony: [Nazwa Firmy] w "greeting-name"
+       na nazwę biura nieruchomości / agenta, do którego kierujesz stronę.
+    3. Wgraj wygenerowane wideo jako "video.mp4" do tego samego folderu.
+    4. Gotowe — reszta strony (nawigacja, style, sekcja CTA) jest
+       wspólna i nie wymaga zmian.
+    ================================================================
+  -->
+
+  <nav class="nav">
+    <a href="../index.html" class="logo-slot">
+      <img src="../logo.png" alt="DomWizualnie" class="logo-icon">
+      <span class="logo-col">
+        <span class="logo-text">Dom<span>Wizualnie</span></span>
+        <span class="logo-sub" id="logo-brand"></span>
+      </span>
+    </a>
+    <a href="#wideo" class="btn-cta">Zobacz co przygotowaliśmy dla Ciebie</a>
+  </nav>
+
+  <div class="greeting">
+    <div class="greeting-name">Dzień dobry, <span class="accent">Wawel Service</span></div>
+    <div class="greeting-sub">Przygotowaliśmy dla Was coś specjalnego.</div>
+  </div>
+
+  <section class="listing-section">
+    <div class="section-label">Znaleźliśmy Wasze ogłoszenie</div>
+    <h1 class="listing-title" id="page-title">Łepkowskiego 11, Kraków</h1>
+
+    <div class="otodom-frame">
+      <div class="otodom-titlebar">
+        <span class="otodom-dot"></span>
+        <span class="otodom-dot"></span>
+        <span class="otodom-dot"></span>
+        <div class="otodom-urlbar">otodom.pl/pl/inwestycja/lepkowskiego-11...</div>
+        <a href="https://www.otodom.pl/pl/inwestycja/lepkowskiego-11-ID4x6Dq" target="_blank" rel="noopener" class="otodom-open-link">Otwórz ↗</a>
+      </div>
+
+      <div class="otodom-body">
+        <div class="otodom-gallery" id="otodom-gallery">
+          <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbiI6ImNnNHMzbDM2cjN4dTMtRUNPU1lTVEVNIiwidyI6W3siZm4iOiJlbnZmcXFlMWF5NGsxLUFQTCIsInMiOiIxNiIsImEiOiIwIiwicCI6IjEwLC0xMCJ9XX0.WzmZ2X-KYiBqRCZ_C3tAf1ZTSGjTTaS99kY0X-7xJCQ/image;s=900x0;q=80" alt="Zdjęcie inwestycji 1"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'), {className:'otodom-photo-placeholder', textContent:'Wstaw zdjęcia z ogłoszenia (min. 3)'}))">
+          <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbiI6IjBzOGs5OWFvOG42Yi1FQ09TWVNURU0iLCJ3IjpbeyJmbiI6ImVudmZxcWUxYXk0azEtQVBMIiwicyI6IjE2IiwiYSI6IjAiLCJwIjoiMTAsLTEwIn1dfQ.5ufhMGFbMRBUXGeUG8mpowClycRLo5Ted1YHoVr1if8/image;s=900x0;q=80" alt="Zdjęcie inwestycji 2" loading="lazy">
+          <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbiI6IjE4NjByMzBpbDQ2Yy1FQ09TWVNURU0iLCJ3IjpbeyJmbiI6ImVudmZxcWUxYXk0azEtQVBMIiwicyI6IjE2IiwiYSI6IjAiLCJwIjoiMTAsLTEwIn1dfQ.mI0UVQ48qyonf_aS5kroqZv5gpL_IVyDmMKyi0Fe84I/image;s=900x0;q=80" alt="Zdjęcie inwestycji 3" loading="lazy">
+        </div>
+        <div class="otodom-dots" id="otodom-dots">
+          <span class="otodom-dot-nav active"></span>
+          <span class="otodom-dot-nav"></span>
+          <span class="otodom-dot-nav"></span>
+        </div>
+
+        <div class="otodom-info">
+          <div class="otodom-title" id="listing-headline">Łepkowskiego 11 — mieszkania od Wawel Service</div>
+          <div class="otodom-price" id="listing-price">Zapytaj o cenę</div>
+          <div class="otodom-addr" id="listing-address">Prądnik Czerwony, Kraków</div>
+          <div class="otodom-badges">
+            <span class="otodom-badge" id="listing-rooms">Inwestycja</span>
+            <span class="otodom-badge" id="listing-area">od 45 m²</span>
+            <span class="otodom-badge" id="listing-ref">Nr 66995676</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section" id="wideo">
+    <div class="section-label">Wasze wideo</div>
+    <h2 class="video-heading">Stworzyliśmy dla Was profesjonalne wideo tej inwestycji</h2>
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/7dcWfvBMUCo?rel=0&modestbranding=1&iv_load_policy=3"
+        title="Wideo inwestycji Łepkowskiego 11 — Wawel Service"
+        style="width: 100%; aspect-ratio: 16 / 9; display: block; border: 0;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="delivery-badge">Gotowe wideo w 48 godzin</div>
+    <h2 class="cta-title">Zainteresowany <span class="accent">wideo</span> dla pozostałych nieruchomości?</h2>
+    <p class="cta-text">Zamów teraz i daj nam znać, dla jakich ogłoszeń chcesz takie materiały.</p>
+
+    <form class="order-form" action="https://formsubmit.co/oskar@meetflixel.co" method="POST">
+      <input type="hidden" name="_subject" value="Nowe zamówienie wideo — Wawel Service">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+
+      <div class="form-row">
+        <label for="form-name">Imię i nazwisko / Firma</label>
+        <input type="text" id="form-name" name="Imię i nazwisko / Firma" required>
+      </div>
+
+      <div class="form-row">
+        <label for="form-email">Adres e-mail</label>
+        <input type="email" id="form-email" name="Email" required>
+      </div>
+
+      <div class="form-row">
+        <label for="form-phone">Telefon (opcjonalnie)</label>
+        <input type="tel" id="form-phone" name="Telefon">
+      </div>
+
+      <div class="form-row">
+        <label for="form-message">Wiadomość</label>
+        <textarea id="form-message" name="Wiadomość" rows="7" placeholder="Dzień dobry, chciałbym złożyć zamówienie dla tych ogłoszeń — w sumie będą to trzy filmiki. Chciałbym zamówić na firmę, dane do faktury: [nazwa spółki], NIP [numer], adres [adres]. Płatność przelewem. Proszę o informacje."></textarea>
+      </div>
+
+      <label class="form-consent">
+        <input type="checkbox" name="Zgoda" value="Akceptuję Politykę Prywatności" required>
+        <span>Akceptuję <a href="../privacy.html" target="_blank" rel="noopener">Politykę Prywatności</a></span>
+      </label>
+
+      <button type="submit" class="btn-primary">Wyślij zapytanie</button>
+    </form>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <span class="compare-label">Przed</span>
+        <img src="../przed.png" alt="Ogłoszenie przed dodaniem wideo">
+      </div>
+      <div class="compare-card">
+        <span class="compare-label after">Po</span>
+        <img src="../po.png" alt="Ogłoszenie po dodaniu wideo">
+      </div>
+    </div>
+  </section>
+
+  <div class="legal-bar">
+    <span>&copy; 2026 DomWizualnie. Wszelkie prawa zastrzeżone.</span>
+    <a href="../privacy.html">Polityka Prywatności</a>
+  </div>
+
+  <script>
+    // Assembled at runtime so the legal entity name is not present as
+    // plain indexable text in the HTML source.
+    (function () {
+      var parts = ['od ', 'Flixel', ' sp. z o.o.'];
+      document.getElementById('logo-brand').textContent = parts.join('');
+    })();
+  </script>
+
+  <script>
+    // Auto-advancing photo carousel for the embedded listing.
+    (function () {
+      var gallery = document.getElementById('otodom-gallery');
+      var dotsWrap = document.getElementById('otodom-dots');
+      if (!gallery || !dotsWrap) return;
+
+      var count = gallery.querySelectorAll('img').length;
+      var dots = dotsWrap.querySelectorAll('.otodom-dot-nav');
+      var index = 0;
+      var timer = null;
+
+      function goTo(i) {
+        index = i % count;
+        gallery.scrollTo({ left: gallery.clientWidth * index, behavior: 'smooth' });
+        dots.forEach(function (dot, di) {
+          dot.classList.toggle('active', di === index);
+        });
+      }
+
+      function start() {
+        timer = setInterval(function () { goTo(index + 1); }, 3000);
+      }
+
+      start();
+
+      gallery.addEventListener('mouseenter', function () { clearInterval(timer); });
+      gallery.addEventListener('mouseleave', start);
+    })();
+  </script>
+
+</body>
+</html>
